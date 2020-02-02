@@ -48,7 +48,7 @@ namespace FormulaOneWebApp
             }
         }
 
-        protected void X_results_btn_Click(object sender, EventArgs e)
+        protected void x_results_btn_Click(object sender, EventArgs e)
         {
             Response.Redirect("index.aspx", true);
         }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="manage-circuits.aspx.cs" Inherits="FormulaOneWebApp.administration.manage_circuits" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="add-circuit.aspx.cs" Inherits="FormulaOneWebApp.administration.add_circuit" %>
 
 <!doctype html>
 <html lang="en">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="/css/admin.css" rel="stylesheet" />
+    <link href="../css/admin.css" rel="stylesheet" />
 
     <link href="../css/override.css" rel="stylesheet" />
 
@@ -84,27 +84,65 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Manage Circuits</h1>
+                    <h1 class="h2">Add Circuit</h1>
                 </div>
 
                 <form runat="server">
-                    <asp:GridView ID="x_list_all_circuits" runat="server" CssClass="table table-bordered table-striped" AutoGenerateColumns="false" EmptyDataText="No Circuits Found">
-                        <Columns>
-                            <asp:BoundField HeaderText="ID" HeaderStyle-CssClass="hiddencol" ItemStyle-CssClass="hiddencol" DataField="Circuit_ID" />
-                            <asp:BoundField HeaderText="Name" DataField="Circuit_Name" />
-                            <asp:BoundField HeaderText="Type" DataField="Circuit_Type" />
-                            <asp:BoundField HeaderText="Direction" DataField="Direction" />
-                            <asp:BoundField HeaderText="Circuit Location" DataField="Circuit_Location" />
-                            <asp:BoundField HeaderText="Length" DataField="Last_length_used" />
-                            <asp:BoundField HeaderText="Grands Prix Name" DataField="Grands_Prix_Name" />
-                            <asp:BoundField HeaderText="Rank" DataField="Rank" />
-                            <asp:TemplateField ItemStyle-Width="10%" HeaderStyle-Width="10%" ShowHeader="False">
-                                <ItemTemplate>
-                                    <asp:Button ID="x_edit_driver" Text="Edit Circuit" OnClick="x_edit_driver_Click" CssClass="btn btn-sm btn-success mb-2 mt-2" runat="server" />                                                                        
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
+                    <div class="row">
+                        <div class="col-md-12 order-md-1">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="x_circuit_name">Circuit name</label>
+                                    <asp:TextBox ID="x_circuit_name" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <div class="invalid-feedback">
+                                        Valid first name is required.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="x_grand_prix_name">Grand Prix Name</label>
+                                    <asp:TextBox ID="x_grand_prix_name" runat="server" CssClass="form-control"></asp:TextBox>                                    
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="x_circuit_length">Circuit Length</label>
+                                    <asp:TextBox ID="x_circuit_length" runat="server" CssClass="form-control"></asp:TextBox>
+                                    <div class="invalid-feedback">
+                                        Valid last name is required.
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="x_circuit_type">Circuit Type</label>
+                                    <asp:DropDownList ID="x_circuit_type" runat="server" CssClass="form-control"></asp:DropDownList>                                   
+                                </div>
+                            </div>
+
+                            <div class="row">                                
+                                <div class="col-md-6">
+                                    <label for="">Circuit Direction</label>
+                                    <asp:DropDownList ID="x_circuit_direction" runat="server" CssClass="form-control"></asp:DropDownList>
+                                </div>
+                                <div class="col-md-6"></div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="x_circuit_country">Country</label>
+                                    <asp:DropDownList ID="x_circuit_country" runat="server" CssClass="form-control"></asp:DropDownList>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="x_circuit_city">City</label>
+                                    <asp:dropdownlist ID="x_circuit_city" runat="server" CssClass="form-control"></asp:dropdownlist>
+                                    <asp:Label ID="x_city_validation" runat="server"></asp:Label>
+                                </div>
+                            </div>
+
+                            <hr class="mb-4">
+                            <asp:Button ID="x_save_btn" runat="server" OnClick="x_save_btn_Click" CssClass="btn btn-primary btn-lg btn-block" Text="Save Details" />
+                        </div>
+                    </div>
+
                 </form>
             </main>
         </div>

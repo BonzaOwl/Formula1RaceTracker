@@ -2,7 +2,8 @@
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace FormulaOneWebApp.administration
 {
@@ -34,6 +35,18 @@ namespace FormulaOneWebApp.administration
                 x_list_all_circuits.DataBind();
 
             }
+        }
+
+        protected void x_edit_driver_Click(object sender, EventArgs e)
+        {
+            var CloseLink = (Control)sender;
+            GridViewRow row = (GridViewRow)CloseLink.NamingContainer;
+
+            int Circuit_ID = Convert.ToInt32(row.Cells[0].Text);
+
+            Session["CircuitID"] = Circuit_ID;
+
+            Response.Redirect("edit-circuit.aspx");
         }
     }
 }
